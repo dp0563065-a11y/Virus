@@ -2,60 +2,78 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<title>PokiKu - Main Game Gratis</title>
+<title>PokiKu V2 - 13 Game Gratis</title>
 <style>
   body{margin:0;background:#0a0a0a;color:white;font-family:Poppins,sans-serif}
-  header{background:#ff006e;padding:15px;text-align:center;font-size:28px;font-weight:bold}
-  .container{padding:20px;display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:20px}
+  header{background:#ff006e;padding:15px;text-align:center;font-size:28px;font-weight:bold;position:sticky;top:0;z-index:99}
+  .container{padding:20px;display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:15px}
   .game-card{background:#1a1a1a;border-radius:15px;overflow:hidden;cursor:pointer;transition:0.3s}
   .game-card:hover{transform:scale(1.05);box-shadow:0 0 20px #ff006e}
-  .game-card img{width:100%;height:150px;object-fit:cover}
-  .game-card h3{padding:10px;text-align:center;margin:0}
-  #game-area{display:none;padding:20px;text-align:center}
-  iframe{border:none;border-radius:15px;width:100%;max-width:800px;height:500px}
-  .back-btn{margin:20px;padding:10px 20px;background:#ff006e;border:none;border-radius:10px;color:white;cursor:pointer}
+  .game-card img{width:100%;height:130px;object-fit:cover}
+  .game-card h3{padding:8px;text-align:center;margin:0;font-size:14px}
+  #game-area{display:none;padding:10px;text-align:center}
+  .game-wrapper{max-width:900px;margin:auto;position:relative}
+  iframe{border:none;border-radius:15px;width:100%;height:500px;transition:0.3s}
+  iframe.full{height:90vh}
+  .btn-group{display:flex;gap:10px;justify-content:center;margin:15px;flex-wrap:wrap}
+  .btn{padding:10px 20px;background:#ff006e;border:none;border-radius:10px;color:white;cursor:pointer;font-weight:bold}
+  .btn:hover{background:#e0005e}
 </style>
 </head>
 <body>
-<header>🎮 POKIKU</header>
+<header>🎮 POKIKU V2</header>
 
 <div id="menu" class="container">
-  <div class="game-card" onclick="bukaGame('snake')">
-    <img src="https://via.placeholder.com/200x150/22d3ee/fff?text=SNAKE">
-    <h3>Snake Game</h3>
-  </div>
-  <div class="game-card" onclick="bukaGame('2048')">
-    <img src="https://via.placeholder.com/200x150/facc15/000?text=2048">
-    <h3>Game 2048</h3>
-  </div>
-  <div class="game-card" onclick="bukaGame('flappy')">
-    <img src="https://via.placeholder.com/200x150/38bdf8/fff?text=FLAPPY">
-    <h3>Flappy Bird</h3>
-  </div>
+  <div class="game-card" onclick="bukaGame('https://playsnake.org/','Snake')"><img src="https://via.placeholder.com/200x130/22d3ee/fff?text=SNAKE"><h3>Snake</h3></div>
+  <div class="game-card" onclick="bukaGame('https://2048game.com/','2048')"><img src="https://via.placeholder.com/200x130/facc15/000?text=2048"><h3>2048</h3></div>
+  <div class="game-card" onclick="bukaGame('https://flappybird.io/','Flappy Bird')"><img src="https://via.placeholder.com/200x130/38bdf8/fff?text=FLAPPY"><h3>Flappy Bird</h3></div>
+  <div class="game-card" onclick="bukaGame('https://agar.io/','Agar.io')"><img src="https://via.placeholder.com/200x130/10b981/fff?text=AGAR.IO"><h3>Agar.io</h3></div>
+  <div class="game-card" onclick="bukaGame('https://slither.io/','Slither.io')"><img src="https://via.placeholder.com/200x130/a855f7/fff?text=SLITHER"><h3>Slither.io</h3></div>
+  <div class="game-card" onclick="bukaGame('https://tetris.com/play-tetris','Tetris')"><img src="https://via.placeholder.com/200x130/f97316/fff?text=TETRIS"><h3>Tetris</h3></div>
+  <div class="game-card" onclick="bukaGame('https://minesweeperonline.com/','Minesweeper')"><img src="https://via.placeholder.com/200x130/ef4444/fff?text=MINES"><h3>Minesweeper</h3></div>
+  <div class="game-card" onclick="bukaGame('https://www.1001games.com/pool/8-ball-pool','8 Ball Pool')"><img src="https://via.placeholder.com/200x130/14b8a6/fff?text=POOL"><h3>8 Ball Pool</h3></div>
+  <div class="game-card" onclick="bukaGame('https://paperio.io/','Paper.io')"><img src="https://via.placeholder.com/200x130/ec4899/fff?text=PAPER"><h3>Paper.io</h3></div>
+  <div class="game-card" onclick="bukaGame('https://diep.io/','Diep.io')"><img src="https://via.placeholder.com/200x130/6366f1/fff?text=DIEP"><h3>Diep.io</h3></div>
+  <div class="game-card" onclick="bukaGame('https://crazygames.com/game/duck-life','Duck Life')"><img src="https://via.placeholder.com/200x130/fbbf24/000?text=DUCK"><h3>Duck Life</h3></div>
+  <div class="game-card" onclick="bukaGame('https://krunker.io/','Krunker')"><img src="https://via.placeholder.com/200x130/84cc16/fff?text=KRUNKER"><h3>Krunker FPS</h3></div>
+  <div class="game-card" onclick="bukaGame('https://shellshock.io/','Shell Shockers')"><img src="https://via.placeholder.com/200x130/f43f5e/fff?text=EGG"><h3>Shell Shockers</h3></div>
 </div>
 
 <div id="game-area">
-  <button class="back-btn" onclick="kembali()">← Kembali ke Menu</button>
-  <div id="game-frame"></div>
+  <div class="game-wrapper">
+    <h2 id="game-title"></h2>
+    <div class="btn-group">
+      <button class="btn" onclick="kecil()">📺 Layar Kecil</button>
+      <button class="btn" onclick="besar()">⛶ Full Layar</button>
+      <button class="btn" onclick="kembali()">← Kembali</button>
+    </div>
+    <div id="game-frame"></div>
+  </div>
 </div>
 
 <script>
-function bukaGame(nama){
+let iframeEl;
+function bukaGame(link, judul){
   document.getElementById('menu').style.display = 'none';
   document.getElementById('game-area').style.display = 'block';
-  
-  let link = "";
-  if(nama == 'snake') link = "https://playsnake.org/";
-  if(nama == '2048') link = "https://2048game.com/";
-  if(nama == 'flappy') link = "https://flappybird.io/";
-  
-  document.getElementById('game-frame').innerHTML = `<iframe src="${link}"></iframe>`;
+  document.getElementById('game-title').innerText = judul;
+  document.getElementById('game-frame').innerHTML = `<iframe id="gameIframe" src="${link}" allow="fullscreen"></iframe>`;
+  iframeEl = document.getElementById('gameIframe');
 }
 
+function besar(){
+  iframeEl.classList.add('full');
+  if (iframeEl.requestFullscreen) iframeEl.requestFullscreen();
+}
+function kecil(){
+  iframeEl.classList.remove('full');
+  if (document.exitFullscreen) document.exitFullscreen();
+}
 function kembali(){
   document.getElementById('menu').style.display = 'grid';
   document.getElementById('game-area').style.display = 'none';
   document.getElementById('game-frame').innerHTML = "";
+  if (document.exitFullscreen) document.exitFullscreen();
 }
 </script>
 </body>

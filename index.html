@@ -1,8 +1,62 @@
 <!DOCTYPE html>
-<html>
-<body style="background:black;color:red;text-align:center;padding:100px">
-<h1>⚠️ PERINGATAN ⚠️</h1>
-<h2>HP ANDA TERKENA 37 VIRUS</h2>
-<button onclick="alert('Canda su, HP mu aman 😂')">HAPUS VIRUS</button>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>PokiKu - Main Game Gratis</title>
+<style>
+  body{margin:0;background:#0a0a0a;color:white;font-family:Poppins,sans-serif}
+  header{background:#ff006e;padding:15px;text-align:center;font-size:28px;font-weight:bold}
+  .container{padding:20px;display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:20px}
+  .game-card{background:#1a1a1a;border-radius:15px;overflow:hidden;cursor:pointer;transition:0.3s}
+  .game-card:hover{transform:scale(1.05);box-shadow:0 0 20px #ff006e}
+  .game-card img{width:100%;height:150px;object-fit:cover}
+  .game-card h3{padding:10px;text-align:center;margin:0}
+  #game-area{display:none;padding:20px;text-align:center}
+  iframe{border:none;border-radius:15px;width:100%;max-width:800px;height:500px}
+  .back-btn{margin:20px;padding:10px 20px;background:#ff006e;border:none;border-radius:10px;color:white;cursor:pointer}
+</style>
+</head>
+<body>
+<header>🎮 POKIKU</header>
+
+<div id="menu" class="container">
+  <div class="game-card" onclick="bukaGame('snake')">
+    <img src="https://via.placeholder.com/200x150/22d3ee/fff?text=SNAKE">
+    <h3>Snake Game</h3>
+  </div>
+  <div class="game-card" onclick="bukaGame('2048')">
+    <img src="https://via.placeholder.com/200x150/facc15/000?text=2048">
+    <h3>Game 2048</h3>
+  </div>
+  <div class="game-card" onclick="bukaGame('flappy')">
+    <img src="https://via.placeholder.com/200x150/38bdf8/fff?text=FLAPPY">
+    <h3>Flappy Bird</h3>
+  </div>
+</div>
+
+<div id="game-area">
+  <button class="back-btn" onclick="kembali()">← Kembali ke Menu</button>
+  <div id="game-frame"></div>
+</div>
+
+<script>
+function bukaGame(nama){
+  document.getElementById('menu').style.display = 'none';
+  document.getElementById('game-area').style.display = 'block';
+  
+  let link = "";
+  if(nama == 'snake') link = "https://playsnake.org/";
+  if(nama == '2048') link = "https://2048game.com/";
+  if(nama == 'flappy') link = "https://flappybird.io/";
+  
+  document.getElementById('game-frame').innerHTML = `<iframe src="${link}"></iframe>`;
+}
+
+function kembali(){
+  document.getElementById('menu').style.display = 'grid';
+  document.getElementById('game-area').style.display = 'none';
+  document.getElementById('game-frame').innerHTML = "";
+}
+</script>
 </body>
 </html>
